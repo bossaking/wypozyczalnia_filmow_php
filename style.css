@@ -200,3 +200,49 @@ form {
 .movie-director{
     margin: 0;
 }
+
+.movie-container{
+    display: flex;
+}
+
+.movie{
+    width: 40%;
+    margin: 2rem auto;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.movie-container header{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.movie-container header h2{
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.movie-body{
+    padding: 1rem;
+}
+
+.movie hr{
+    width: 90%;
+}
+
+.filter-container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.filter-container select{
+    margin: auto;
+    width: 20rem;
+    padding: 1rem;
+    font-family: 'Arbutus Slab', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #14C38E;
+    text-transform: uppercase;
+}

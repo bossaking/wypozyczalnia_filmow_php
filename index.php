@@ -6,8 +6,7 @@ $getMovies = "SELECT * FROM Film INNER JOIN GatunekFilmu ON Film.id_gatunek = Ga
 
 if (isset($_GET['gatunek'])) {
     $type = $_GET['gatunek'];
-
-    $getMovies = "SELECT * FROM Film WHERE id_gatunek = '$type' INNER JOIN GatunekFilmu ON Film.id_gatunek = GatunekFilmu.id_gatunek";
+    $getMovies = "SELECT * FROM Film f INNER JOIN GatunekFilmu gf ON f.id_gatunek = gf.id_gatunek WHERE f.id_gatunek = '$type'";
 }
 
 $result = $conn->query($getMovies);
@@ -19,14 +18,42 @@ if ($result->num_rows > 0) {
     }
 }
 
+$getTypes = "SELECT * FROM GatunekFilmu";
+$types = array();
+$result = $conn->query($getTypes);
+while ($row = $result->fetch_assoc()) {
+    array_push($types, $row);
+}
 ?>
 
+<div class="filter-container">
+    <select name="type" id="filter-select">
+        <?php
+            if(!isset($_GET['gatunek'])){
+                echo '<option value="0" selected>Wszystkie gatunki</option>';
+            }else{
+                echo '<option value="0">Wszystkie gatunki</option>';
+            }
+            foreach ($types as $type){
+                if(isset($_GET['gatunek']) && $_GET['gatunek'] == $type['id_gatunek']){
+                    echo '<option value="'.$type['id_gatunek'].'" selected>'.$type['nazwa'].'</option>';
+                }else{
+                    echo '<option value="'.$type['id_gatunek'].'">'.$type['nazwa'].'</option>';
+                }
+            }
+        ?>
+    </select>
+</div>
+
 <div class="movies-container">
+
+    <script src="js/index.js"></script>
+
     <?php
     foreach ($movies as $movie) {
         ?>
 
-        <div class="movie-card">
+        <div class="movie-card" id="<?=$movie['id_film']?>">
             <header>
                 <span><?= $movie['tytul'] ?></span>
                 <div class="subtitle">
