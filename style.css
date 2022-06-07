@@ -1,0 +1,202 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    background-color: #14C38E;
+}
+
+.page-header .site-name {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: 'Akaya Kanadaka', sans-serif;
+    color: white;
+    text-decoration: none;
+    margin: auto auto auto 0;
+}
+
+.page-header .site-name:hover {
+    color: #E3FCBF;
+}
+
+.page-header .nav-links {
+    margin: auto 0 auto auto;
+}
+
+.page-header .nav-links a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-family: 'Akaya Telivigala', sans-serif;
+    font-size: 1.5rem;
+}
+
+.page-header .nav-links a:hover {
+    color: #E3FCBF;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    margin: 5rem auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+    margin: .5rem 0;
+}
+
+.form-field label {
+    font-size: 1.2rem;
+    margin-bottom: .2rem;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.form-field input {
+    font-size: 1.2rem;
+    padding: .5rem;
+    font-family: 'Arbutus Slab', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #14C38E;
+}
+
+::placeholder {
+    color: #c4c0c0;
+}
+
+.button {
+    padding: 1rem;
+    font-family: 'Akaya Telivigala', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.primary-button {
+    color: white;
+    background-color: #646FD4;
+}
+
+.sign-question {
+    margin: 0 auto 3rem;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.sign-question a {
+    text-decoration: none;
+    color: #14C38E;
+}
+
+.sign-question a:hover {
+    color: #646FD4;
+}
+
+.form-errors {
+    color: #FF5D5D;
+    margin: 2rem auto -4rem;
+}
+
+.movies-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    padding: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 2rem;
+    border-radius: 5px;
+    max-width: 20rem;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.movie-card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out 0s;
+}
+
+.movie-card header span {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Arbutus Slab', sans-serif;
+    margin: 0;
+}
+
+.movie-type {
+    font-family: 'Arbutus Slab', sans-serif;
+    color: #c4c0c0;
+    margin: 0;
+}
+
+.movie-card-body {
+    font-size: .8rem;
+}
+
+.subtitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.available {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #14C38E;
+}
+
+.not-available {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #FF5D5D;
+}
+
+.green-hr{
+    border: 1px solid #14C38E;
+}
+
+
+.red-hr{
+    border: 1px solid #FF5D5D;
+}
+
+.movie-card footer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.movie-price{
+    margin: 0 0 0 auto;
+}
+
+.movie-director{
+    margin: 0;
+}
