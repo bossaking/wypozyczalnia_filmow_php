@@ -14,4 +14,18 @@ window.onload =  () => {
       window.location = "index.php?gatunek=" + typeFilter.value;
     }
   });
+
+  let availableFilter = document.getElementById('filter-available-select');
+  availableFilter.addEventListener('change', () => {
+    if(availableFilter.value === "0"){
+      window.location = "index.php";
+    }else{
+      if(typeFilter.value === "0"){
+        window.location = "index.php?dostepny=" + availableFilter.value;
+      }else{
+        window.location = window.location + "&dostepny=" + availableFilter.value;
+      }
+
+    }
+  });
 };

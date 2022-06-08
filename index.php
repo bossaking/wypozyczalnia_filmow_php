@@ -1,12 +1,22 @@
 <?php
+ob_start();
 include_once('header.php');
 
 $conn = OpenConnection();
-$getMovies = "SELECT * FROM Film INNER JOIN GatunekFilmu ON Film.id_gatunek = GatunekFilmu.id_gatunek";
+$getMovies = "SELECT * FROM Film f INNER JOIN GatunekFilmu gf ON f.id_gatunek = gf.id_gatunek";
 
 if (isset($_GET['gatunek'])) {
     $type = $_GET['gatunek'];
-    $getMovies = "SELECT * FROM Film f INNER JOIN GatunekFilmu gf ON f.id_gatunek = gf.id_gatunek WHERE f.id_gatunek = '$type'";
+    $getMovies = $getMovies . " WHERE f.id_gatunek = '$type'";
+    if(isset($_GET['dostepny'])){
+        $available = $_GET['dostepny'];
+        $getMovies = $getMovies . " AND f.czy_wypozyczony = 'N'";
+    }
+}else{
+    if(isset($_GET['dostepny'])){
+        $available = $_GET['dostepny'];
+        $getMovies = $getMovies . " WHERE f.czy_wypozyczony = 'N'";
+    }
 }
 
 $result = $conn->query($getMovies);
@@ -29,18 +39,29 @@ while ($row = $result->fetch_assoc()) {
 <div class="filter-container">
     <select name="type" id="filter-select">
         <?php
-            if(!isset($_GET['gatunek'])){
-                echo '<option value="0" selected>Wszystkie gatunki</option>';
-            }else{
-                echo '<option value="0">Wszystkie gatunki</option>';
+        if (!isset($_GET['gatunek'])) {
+            echo '<option value="0" selected>Wszystkie gatunki</option>';
+        } else {
+            echo '<option value="0">Wszystkie gatunki</option>';
+        }
+        foreach ($types as $type) {
+            if (isset($_GET['gatunek']) && $_GET['gatunek'] == $type['id_gatunek']) {
+                echo '<option value="' . $type['id_gatunek'] . '" selected>' . $type['nazwa'] . '</option>';
+            } else {
+                echo '<option value="' . $type['id_gatunek'] . '">' . $type['nazwa'] . '</option>';
             }
-            foreach ($types as $type){
-                if(isset($_GET['gatunek']) && $_GET['gatunek'] == $type['id_gatunek']){
-                    echo '<option value="'.$type['id_gatunek'].'" selected>'.$type['nazwa'].'</option>';
-                }else{
-                    echo '<option value="'.$type['id_gatunek'].'">'.$type['nazwa'].'</option>';
-                }
-            }
+        }
+        ?>
+    </select>
+    <select name="type" id="filter-available-select">
+        <?php
+        if (!isset($_GET['dostepny'])) {
+            echo '<option value="0" selected>Wszystkie filmy</option>';
+            echo '<option value="1">Tylko dostępne</option>';
+        } else {
+            echo '<option value="0">Wszystkie filmy</option>';
+            echo '<option value="1" selected>Tylko dostępne</option>';
+        }
         ?>
     </select>
 </div>
@@ -53,7 +74,7 @@ while ($row = $result->fetch_assoc()) {
     foreach ($movies as $movie) {
         ?>
 
-        <div class="movie-card" id="<?=$movie['id_film']?>">
+        <div class="movie-card" id="<?= $movie['id_film'] ?>">
             <header>
                 <span><?= $movie['tytul'] ?></span>
                 <div class="subtitle">
@@ -85,9 +106,9 @@ while ($row = $result->fetch_assoc()) {
             }
             ?>
             <footer>
-                <p class="movie-director"><?=$movie['rezyser']?></p>
+                <p class="movie-director"><?= $movie['rezyser'] ?></p>
                 <p class="movie-price"><?php
-                        echo substr($movie['cena'], 0, -2) . " zł";
+                    echo substr($movie['cena'], 0, -2) . " zł";
                     ?></p>
             </footer>
         </div>

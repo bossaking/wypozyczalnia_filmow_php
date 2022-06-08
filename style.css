@@ -235,14 +235,49 @@ form {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
-.filter-container select{
-    margin: auto;
+select{
     width: 20rem;
     padding: 1rem;
     font-family: 'Arbutus Slab', sans-serif;
     border-radius: 5px;
     border: 1px solid #14C38E;
     text-transform: uppercase;
+}
+
+.order-container{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arbutus Slab', sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-container h2{
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.summary{
+    margin-top: 1rem;
+}
+
+.form-row button{
+    margin: auto;
+    width: 100%;
+}
+
+.accept-button{
+    color: white;
+    background-color: #14C38E;
+}
+
+.cancel-button{
+    border: 1px solid #FF5D5D;
+    background-color: transparent;
+    color: #FF5D5D;
 }

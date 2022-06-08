@@ -34,7 +34,7 @@ include 'db.php';
             <?php
         } else {
             ?>
-            <a href="login.php"><?=$_SESSION['user']['name']?> <?=$_SESSION['user']['surname']?></a>
+            <a href="logout.php"><?=$_SESSION['user']['name']?> <?=$_SESSION['user']['surname']?></a>
             <?php
         }
         ?>

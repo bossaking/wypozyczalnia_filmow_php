@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once('header.php');
 
 if (isset($_SESSION['errors'])) {
@@ -24,7 +25,9 @@ if(isset($_POST['login'])){
         }else{
             $_SESSION['user']['name'] = $user['imie'];
             $_SESSION['user']['surname'] = $user['nazwisko'];
+            $_SESSION['user']['username'] = $user['login'];
             header('Location:index.php');
+            exit();
         }
 
     }

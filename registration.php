@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include_once('header.php');
 
 $name = "";
@@ -46,7 +47,9 @@ if (isset($_POST['register'])) {
             if($conn->query($insert) === true){
                 $_SESSION['user']['name'] = $name;
                 $_SESSION['user']['surname'] = $surname;
+                $_SESSION['user']['username'] = $login;
                 header('Location:index.php');
+                exit();
             }else{
                 array_push($errors, $conn->error);
             }
